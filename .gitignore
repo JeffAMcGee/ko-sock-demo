@@ -1,0 +1,9 @@
+
+node_modules
+*.log
+*.iml
+
+.DS_Store?
+Icon?
+Thumbs.db
+*.swp
