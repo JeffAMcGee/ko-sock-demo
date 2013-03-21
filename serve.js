@@ -11,11 +11,12 @@ var app = module.exports = express();
 
 // Configuration
 
+app.enable('trust proxy');
 app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  // static is a reserved keyword, and jslint complains
+  // static is a reserved keyword, and jshint complains
   app.use(express['static'](__dirname + '/static'));
 
   app.use(function(err, req, res, next){
