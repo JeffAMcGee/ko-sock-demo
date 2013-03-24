@@ -3,7 +3,7 @@ node_modules
 *.log
 *.iml
 
-.DS_Store?
-Icon?
+.DS_Store
 Thumbs.db
 *.swp
+*.swo
