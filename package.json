@@ -5,10 +5,9 @@
   "private": true,
   "dependencies": {
     "express": "3.x",
-    "ember": "*",
-    "convoy": "*",
-    "handlebars": "*",
-    "mocha": "*",
-    "underscore": "*"
+    "knockout": "2.x",
+    "convoy": "0.4.x",
+    "mocha": "1.x",
+    "underscore": "1.x"
   }
 }
