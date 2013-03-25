@@ -10,6 +10,8 @@ var routes = require('./routes');
 
 // Configuration
 var app = module.exports = express();
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 app.enable('trust proxy');
 app.configure(function(){
   app.use(express.bodyParser());
@@ -35,9 +37,10 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
+routes.ioSetup(io);
 
 
 // Start it up!
-app.listen(8000, function(){
+server.listen(8000, function(){
   console.log('Listening on http://localhost:8000/ from pid '+process.pid);
 });
