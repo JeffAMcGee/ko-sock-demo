@@ -7,10 +7,9 @@
 var express = require('express');
 var routes = require('./routes');
 
-var app = module.exports = express();
 
 // Configuration
-
+var app = module.exports = express();
 app.enable('trust proxy');
 app.configure(function(){
   app.use(express.bodyParser());
@@ -33,10 +32,12 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-// Routes
 
+// Routes
 app.get('/', routes.index);
 
+
+// Start it up!
 app.listen(8000, function(){
   console.log('Listening on http://localhost:8000/ from pid '+process.pid);
 });
