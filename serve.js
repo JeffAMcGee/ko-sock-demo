@@ -6,12 +6,13 @@
 
 var express = require('express');
 var routes = require('./routes');
-
-
-// Configuration
+var socket = require('./routes/socket.js');
 var app = module.exports = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
+
+
+// Configuration
 app.enable('trust proxy');
 app.configure(function(){
   app.use(express.bodyParser());
@@ -36,8 +37,8 @@ app.configure('production', function(){
 
 
 // Routes
-app.get('/', routes.index);
-routes.ioSetup(io);
+app.get('/api/play', routes.play);
+io.sockets.on('connection', socket);
 
 
 // Start it up!
