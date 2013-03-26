@@ -10,6 +10,14 @@ var socket = require('./routes/socket.js');
 var app = module.exports = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
+var browserify = require('browserify');
+var fs = require('fs');
+
+
+// bundle javascript for client
+var browserFiles = browserify(['./static/js/main.js']);
+var bundle = browserFiles.bundle({});
+bundle.pipe(fs.createWriteStream('./static/js/bundle.js'));
 
 
 // Configuration
