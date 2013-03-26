@@ -53,6 +53,10 @@
       <div data-bind="foreach: players">
         <p>Hello, <span data-bind="text: $data"></span>!</p>
       </div>
+      <div id="gameboard" data-bind="foreach:pieces">
+        <div class="piece" data-bind="style: {left:x()+'px', top:y()+'px'}" >&#9820;</div>
+      </div>
+
     </div>
 
   </div> <!-- /container -->

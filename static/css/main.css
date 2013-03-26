@@ -4,7 +4,20 @@
    Author's custom styles
    ========================================================================== */
 
+#gameboard {
+    width:400px;
+    height:400px;
+    position:relative;
+    background-image: url(/img/chessboard.png);
+}
 
+#gameboard .piece {
+    font-size: 40px;
+    color: black;
+    position:absolute;
+    /*top: 14px;
+    left: 7px; */
+}
 
 
 
