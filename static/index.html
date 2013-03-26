@@ -50,30 +50,22 @@
 
   <div class="container">
     <div class="row">
-      <div class="span8">
-        <p>First name: <input data-bind="value: firstName" /></p>
-        <p>Last name: <input data-bind="value: lastName" /></p>
-        <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
+      <div data-bind="foreach: players">
+        <p>Hello, <span data-bind="text: $data"></span>!</p>
       </div>
     </div>
 
   </div> <!-- /container -->
 
   <script src="js/vendor/jquery-1.9.1.js"></script>
-  <script src="js/vendor/underscore-1.4.4.js"></script>
-  <script src="js/vendor/knockout-2.2.1.js"></script>
   <script src="js/vendor/bootstrap.js"></script>
-  <script src="js/vendor/socket.io.js"></script>
 
   <!--
   <script src="js/vendor/jquery-1.9.1.min.js"></script>
-  <script src="js/vendor/underscore-1.4.4.min.js"></script>
-  <script src="js/vendor/knockout-2.2.1.min.js"></script>
   <script src="js/vendor/bootstrap.min.js"></script>
-  <script src="js/vendor/socket.io.min.js"></script>
   -->
 
-  <script src="js/main.js"></script>
+  <script src="js/bundle.js"></script>
 
 </body>
 </html>

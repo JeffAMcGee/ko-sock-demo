@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "browserify": "2.x",
     "express": "3.x",
     "knockout": "2.x",
     "convoy": "0.4.x",

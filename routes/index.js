@@ -6,7 +6,7 @@ exports.play = function(req, res){
   //mongo.game.insert({a:3}, function(err, docs) {
   //});
   mongo.game.findOne({a:3}, function(err, item) {
-    var thing = new models.ViewModel("Planet", "Earth");
-    res.send( { title: thing.firstName(), a: item.a } );
+    var game = new models.GameModel();
+    res.send( { title: game.players[0](), a: item.a } );
   });
 };
