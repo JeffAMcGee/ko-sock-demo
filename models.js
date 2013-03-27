@@ -26,6 +26,10 @@ exports.PieceModel = function() {
   self.y = ko.computed(function() {
     return self.location()[1]*CELL_SIZE+TOP_ROOK_OFFSET;
   },this);
+  self.locFromTopLeft = function(top,left) {
+    return [Math.round((left-LEFT_ROOK_OFFSET)/CELL_SIZE),
+            Math.round((top-TOP_ROOK_OFFSET)/CELL_SIZE)];
+  };
 
   self.validMoves = ko.computed(function() {
     var moves = [];

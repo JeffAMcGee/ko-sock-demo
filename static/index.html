@@ -54,7 +54,7 @@
         <p>Hello, <span data-bind="text: $data"></span>!</p>
       </div>
       <div id="gameboard" data-bind="foreach:pieces">
-        <div class="piece" data-bind="style: {left:x()+'px', top:y()+'px'}" >&#9820;</div>
+        <div class="piece" data-bind="style: {left:x()+'px', top:y()+'px'},draggablePiece:null" >&#9820;</div>
       </div>
 
     </div>
@@ -62,12 +62,10 @@
   </div> <!-- /container -->
 
   <script src="js/vendor/jquery-1.9.1.js"></script>
+  <!-- TODO: setup minification with browserify -->
+  <script src="js/vendor/jquery-ui-1.10.2.draggable.js"></script>
+  <script src="js/vendor/jquery-ui-touch-punch.js"></script>
   <script src="js/vendor/bootstrap.js"></script>
-
-  <!--
-  <script src="js/vendor/jquery-1.9.1.min.js"></script>
-  <script src="js/vendor/bootstrap.min.js"></script>
-  -->
 
   <script src="js/bundle.js"></script>
 
