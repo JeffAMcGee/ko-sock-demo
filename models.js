@@ -21,7 +21,6 @@ exports.PieceModel = function() {
   self.parent = ko.observable(null);
 
   self.x = ko.computed(function() {
-    console.log("x called when ",self.location());
     return self.location()[0]*CELL_SIZE+LEFT_ROOK_OFFSET;
   },this);
   self.y = ko.computed(function() {

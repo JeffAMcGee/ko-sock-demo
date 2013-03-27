@@ -16,7 +16,6 @@ setInterval(function() {
   var piece = game.pieces()[0];
   var moves = piece.validMoves();
   var move = moves[Math.floor(Math.random()*moves.length)];
-  console.log(move);
   piece.location(move);
 },1000);
 
