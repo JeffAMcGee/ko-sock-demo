@@ -1,8 +1,12 @@
 var ko = require('knockout');
+var _ = require('underscore');
+
+
 var CELL_SIZE = 50;
 var BOARD_SIZE = 8;
 var TOP_ROOK_OFFSET = 14;
 var LEFT_ROOK_OFFSET = 7;
+
 
 exports.GameModel = function() {
   var self = this;
@@ -46,6 +50,14 @@ exports.PieceModel = function() {
     }
     return moves;
   },this);
+
+  self.isValidMove = function(newLoc) {
+    return _.any(
+      self.validMoves(),
+      function(move) {return move[0]==newLoc[0]&&move[1]==newLoc[1];}
+    );
+  };
+
 };
 
 

@@ -4,11 +4,16 @@ var models = require('../models');
 var game = new models.GameModel();
 
 module.exports = function (socket) {
-  socket.emit('startup', { loc: game.pieces()[0].location() });
+  var piece = game.pieces()[0];
+  socket.emit('startup', { loc: piece.location() });
   socket.on('move', function (data) {
-    game.pieces()[0].location(data.loc);
-    socket.broadcast.emit('move', data);
-    socket.emit('move', data);
+    if(piece.isValidMove(data.loc)) {
+      piece.location(data.loc);
+      socket.broadcast.emit('move', data);
+      socket.emit('move', data);
+    } else {
+      console.log('invalid move');
+    }
   });
 };
 

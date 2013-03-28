@@ -1,5 +1,5 @@
 var ko = require('knockout');
-var _ = require('underscore');
+//var _ = require('underscore');
 var io = require('socket.io-client');
 var socket = io.connect('http://localhost:8000');
 var models = require('../../models');
@@ -26,8 +26,7 @@ ko.bindingHandlers.draggablePiece = {
           stop: function(event,ui) {
             var piece = viewModel;
             var loc = piece.locFromTopLeft(ui.position.top,ui.position.left);
-            var equalsLoc = function(loc2) {return loc2[0]==loc[0]&&loc2[1]==loc[1];};
-            if(_.any(piece.validMoves(),equalsLoc)) {
+            if(piece.isValidMove(loc)) {
               socket.emit('move', { loc: loc });
             }
           }
