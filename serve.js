@@ -25,9 +25,10 @@ app.enable('trust proxy');
 app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  //app.use(express.cookieParser(process.env.COOKIE_SECRET));
+  //app.use(express.session());
   app.use(app.router);
-  // static is a reserved keyword, and jshint complains
-  app.use(express['static'](__dirname + '/static'));
+  app.use(express.static(__dirname + '/static'));
 
   app.use(function(err, req, res, next){
     console.error(err.stack);
