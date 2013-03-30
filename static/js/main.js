@@ -5,14 +5,17 @@ var socket = io.connect('http://localhost:8000');
 var models = require('../../models');
 
 
-var game = new models.GameModel();
+var game = null;
 
 socket.on('startup', function (data) {
-  game.pieces()[0].location(data.loc);
+  game = new models.GameModel(data);
+  // TODO: show pretty spinner while waiting
+  // FIXME: applyBindings can get called twice if the server restarts. That's bad.
+  ko.applyBindings(game);
 });
 
 socket.on('move', function (data) {
-  game.pieces()[0].location(data.loc);
+  game.pieces()[data.id].location(data.location);
 });
 
 
@@ -27,13 +30,11 @@ ko.bindingHandlers.draggablePiece = {
             var piece = viewModel;
             var loc = piece.locFromTopLeft(ui.position.top,ui.position.left);
             if(piece.isValidMove(loc)) {
-              socket.emit('move', { loc: loc });
+              socket.emit('move', { id: bindingContext.$index(), location: loc });
             }
           }
         });
     },
     update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {}
 };
-
-ko.applyBindings(game);
 

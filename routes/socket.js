@@ -1,18 +1,19 @@
+var ko = require('knockout');
 var models = require('../models');
 
 
 var game = new models.GameModel();
 
 module.exports = function (socket) {
-  var piece = game.pieces()[0];
-  socket.emit('startup', { loc: piece.location() });
+  socket.emit('startup', game.toJS());
   socket.on('move', function (data) {
-    if(piece.isValidMove(data.loc)) {
-      piece.location(data.loc);
+    var piece = game.pieces()[data.id];
+    if(piece.isValidMove(data.location)) {
+      piece.location(data.location);
       socket.broadcast.emit('move', data);
       socket.emit('move', data);
     } else {
-      console.log('invalid move');
+      console.error('invalid move');
     }
   });
 };
