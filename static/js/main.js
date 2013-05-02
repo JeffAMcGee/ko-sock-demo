@@ -1,5 +1,4 @@
 var ko = require('knockout');
-//var _ = require('underscore');
 var io = require('socket.io-client');
 var socket = io.connect('http://localhost:8000');
 var models = require('../../models');
@@ -9,7 +8,6 @@ var game = null;
 
 socket.on('startup', function (data) {
   game = new models.GameModel(data);
-  // TODO: show pretty spinner while waiting
   // FIXME: applyBindings can get called twice if the server restarts. That's bad.
   ko.applyBindings(game);
 });
