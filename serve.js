@@ -25,8 +25,6 @@ app.enable('trust proxy');
 app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  //app.use(express.cookieParser(process.env.COOKIE_SECRET));
-  //app.use(express.session());
   app.use(app.router);
   app.use(express.static(__dirname + '/static'));
 
@@ -46,7 +44,7 @@ app.configure('production', function(){
 
 
 // Routes
-app.get('/api/play', routes.play);
+app.get('/api/greet', routes.greet);
 io.sockets.on('connection', socket);
 
 

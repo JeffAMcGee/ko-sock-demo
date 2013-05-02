@@ -48,11 +48,6 @@ var PieceModel = function(data) {
   self.owner = ko.observable(proto.owner);
   self.location = ko.observable(proto.location);
 
-  // serialization
-  self.toJS = function() {
-    return {owner:self.owner(),location:self.location()};
-  };
-
   // computed properties
   self.x = ko.computed(function() {
     return self.location()[0]*CELL_SIZE+LEFT_ROOK_OFFSET;
@@ -61,34 +56,26 @@ var PieceModel = function(data) {
   self.y = ko.computed(function() {
     return self.location()[1]*CELL_SIZE+TOP_ROOK_OFFSET;
   },this);
+};
 
-  self.locFromTopLeft = function(top,left) {
-    return [Math.round((left-LEFT_ROOK_OFFSET)/CELL_SIZE),
-            Math.round((top-TOP_ROOK_OFFSET)/CELL_SIZE)];
-  };
+PieceModel.prototype.toJS = function() {
+  return {owner:this.owner(),location:this.location()};
+};
 
-  self.validMoves = ko.computed(function() {
-    var moves = [];
-    var loc = self.location();
-    for (var i=0;i<BOARD_SIZE;i++) {
-      if(i!=loc[0]){
-        moves.push([i,loc[1]]);
-      }
-    }
-    for (var j=0;j<BOARD_SIZE;j++) {
-      if(j!=loc[1]){
-        moves.push([loc[0],j]);
-      }
-    }
-    return moves;
-  },this);
+PieceModel.prototype.locFromTopLeft = function(top,left) {
+  return [Math.round((left-LEFT_ROOK_OFFSET)/CELL_SIZE),
+          Math.round((top-TOP_ROOK_OFFSET)/CELL_SIZE)];
+};
 
-  self.isValidMove = function(newLoc) {
-    return _.any(
-      self.validMoves(),
-      function(move) {return move[0]==newLoc[0]&&move[1]==newLoc[1];}
-    );
-  };
+PieceModel.prototype.isValidMove = function(move) {
+  // check that move is a valid move for a rook.
+  var loc = this.location();
+  if( move[0]<0 || move[0]>=BOARD_SIZE || move[1]<0 || move[1]>=BOARD_SIZE ) {
+    return false;
+  }
+  var vert = (loc[0]===move[0] && loc[1]!==move[1]);
+  var horz = (loc[0]!==move[0] && loc[1]===move[1]);
+  return vert || horz;
 };
 
 
