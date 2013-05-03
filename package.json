@@ -1,13 +1,12 @@
 {
-  "name": "bayou",
-  "description": "board game bayou",
+  "name": "knockout socket chess",
+  "description": "demo app using knockout and socket.io",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
     "browserify": "2.x",
     "express": "3.x",
     "knockout": "2.x",
-    "mocha": "1.x",
     "mongodb": "1.x",
     "socket.io": "0.9.x",
     "socket.io-client": "0.9.x",
