@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+(function(){
+"use strict";
 
 /**
  * Module dependencies.
@@ -50,5 +52,7 @@ io.sockets.on('connection', socket);
 
 // Start it up!
 server.listen(8000, function(){
-  console.log('Listening on http://localhost:8000/ from pid '+process.pid);
+  console.log('Listening on http://localhost:8000/');
 });
+
+})();

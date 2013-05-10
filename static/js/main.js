@@ -1,3 +1,6 @@
+(function(){
+"use strict";
+
 var ko = require('knockout');
 var io = require('socket.io-client');
 var socket = io.connect('http://localhost:8000');
@@ -36,3 +39,4 @@ ko.bindingHandlers.draggablePiece = {
     update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {}
 };
 
+})();

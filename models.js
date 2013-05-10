@@ -1,3 +1,6 @@
+(function(){
+"use strict";
+
 var ko = require('knockout');
 var _ = require('underscore');
 
@@ -82,3 +85,5 @@ module.exports = {
   GameModel:GameModel,
   PieceModel:PieceModel
 };
+
+})();

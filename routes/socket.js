@@ -1,3 +1,6 @@
+(function(){
+"use strict";
+
 var ko = require('knockout');
 var models = require('../models');
 
@@ -18,3 +21,4 @@ module.exports = function (socket) {
   });
 };
 
+})();
